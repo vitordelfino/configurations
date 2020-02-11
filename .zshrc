@@ -8,7 +8,8 @@ export ZSH="/home/vitor/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="spaceship"
+#ZSH_THEME="robbyrussell"
 #ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
@@ -104,8 +105,14 @@ source $ZSH/oh-my-zsh.sh
 alias robomongo='/usr/local/bin/robomongo/bin/robo3t'
 
 # prompt_context() {
+#   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+#     prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+#   fi
+# }
+prompt_context(){}
+# prompt_context() {
 #  # Custom (Random emoji)
-#  emojis=("⚡️" "🔥" "👑" "😎" "🚀" "💡")
+#  emojis=("⚡" "🔥" "👑" "😎" "🚀" "💡")
 #  RAND_EMOJI_N=$(( $RANDOM % ${#emojis[@]} + 1))
 #  prompt_segment black default "${emojis[$RAND_EMOJI_N]} "
 #}
@@ -127,3 +134,39 @@ zplugin light zsh-users/zsh-autosuggestions
 zplugin light zsh-users/zsh-completions
 
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+# Alias
+
+# go to workspace
+alias gw="echo 'going to workapce' && cd ~/workspace"
+
+# git delete branch (not master, dev)
+alias gdb="echo 'git delete branch (not master, dev)' && git branch | egrep -v '(^\*|master|develop)' | xargs git branch -d"
+
+# git delete merged branchs
+alias gdmb="echo 'git delete merged branchs' && git branch --merged | egrep -v '(^\*|master|develop)' | xargs git branch -d"
+
+######################
+
+###### Spaceships config #####
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  host          # Hostname section
+  git           # Git section (git_branch + git_status)
+  hg            # Mercurial section (hg_branch  + hg_status)
+  exec_time     # Execution time
+  line_sep      # Line break
+  vi_mode       # Vi-mode indicator
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
+SPACESHIP_USER_SHOW=always
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_CHAR_SYMBOL="➜"
+SPACESHIP_CHAR_SUFFIX=" "
+##############################
