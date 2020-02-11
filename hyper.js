@@ -7,6 +7,22 @@ module.exports = {
     hypercwd: {
       initialWorkingDirectory: '~/workspace'
     },
+    broadcast: {
+      debug: false,
+      hotkeys: {
+        selectCurrentPane: "Ctrl+Alt+P",
+        selectCurrentTabPanes: "Alt+b",
+      },
+      indicatorStyle: {
+        position: "absolute",
+        top: 5,
+        right: 10,
+        borderRadius: "50%",
+        width: "10px",
+        height: "10px",
+        background: "red"
+      }
+    },
     paneNavigation: {
       debug: false,
       hotkeys: {
@@ -174,13 +190,13 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  // "hyper-material-theme", "hyper-night-owl", "hyper-flat", "hyper-oceanic-next",
+  // "hyper-material-theme", "hyper-night-owl", "hyper-flat", "hyper-oceanic-next", "hyper-solarized",
   plugins: [
-    "hyper-night-owl",
+    "hyper-oceanic-next",
     "hypercwd",
     "hyper-pane",
     "hyper-highlight-active-pane",
-    "hyper-broadcast"
+    "hyper-broadcast",
   ],
 
   // in development, you can create a directory under
